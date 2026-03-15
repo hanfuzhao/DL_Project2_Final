@@ -1,6 +1,6 @@
 # SafeType — AI-Powered Content Safety Detection for Children
 
- A deep learning project at Duke University. We built a real-time content safety system that monitors children's chat messages across Android apps (WhatsApp, Instagram, Snapchat, etc.) and classifies them into **10 categories**: clean, racism, sexism, profanity, cyberbullying, toxicity, hate speech, implicit hate, threat, and sarcasm.
+A deep learning project at Duke University. We built a real-time content safety system that monitors children's chat messages across Android apps (WhatsApp, Instagram, Snapchat, etc.) and classifies them into **10 categories**: clean, racism, sexism, profanity, cyberbullying, toxicity, hate speech, implicit hate, threat, and sarcasm.
 
 The system includes a custom-trained DistilBERT model, a deployed API, an Android keyboard app that captures messages, and two web interfaces for monitoring and demonstration.
 
@@ -21,7 +21,7 @@ The system includes a custom-trained DistilBERT model, a deployed API, an Androi
 │   ├── make_dataset.py     <- Combines 8 data sources into unified 10-class dataset
 │   ├── build_features.py   <- Text cleaning, TF-IDF, handcrafted features
 │   ├── model.py            <- Trains Naive Baseline, Logistic Regression, DistilBERT
-│   └── experiment.py       <- Training size sensitivity + noise robustness
+│   └── experiment.py       <- Training size sensitivity + noise robustness + ablation study
 ├── models/
 │   ├── naive_baseline.pkl
 │   ├── logistic_regression.pkl
@@ -124,5 +124,7 @@ Android Device                    Cloud
 
 - **Training size sensitivity**: F1 grows from 0.36 (1% data) to 0.62 (100%)
 - **Noise robustness**: F1 drops from 0.62 (clean) to 0.22 (30% character noise)
+- **Ablation (preprocessing)**: Lemmatization hurts F1 from 0.632 to 0.609. Bigrams and sublinear TF scaling recover performance to 0.622。
 
-Results and plots in `data/outputs/`.
+
+All results and plots in `data/outputs/`.
